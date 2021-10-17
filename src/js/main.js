@@ -20,6 +20,9 @@ function addRepoCard(repoData) {
     const repoOwner = document.createElement('li')
     const repoStars = document.createElement('li')
 
+    const deleteCardButton = document.createElement('div')
+    deleteCardButton.classList.add('delete-card-button')
+
     repoName.textContent = 'Name: ' + repoData.name
     repoOwner.textContent = 'Owner: ' + repoData['owner']['login']
     repoStars.textContent = 'Stars: ' + repoData['stargazers_count']
@@ -27,8 +30,13 @@ function addRepoCard(repoData) {
     repoCard.appendChild(repoName)
     repoCard.appendChild(repoOwner)
     repoCard.appendChild(repoStars)
+    repoCard.appendChild(deleteCardButton)
 
     reposList.appendChild(repoCard)
+
+    deleteCardButton.addEventListener('click', () => {
+        reposList.removeChild(repoCard)
+    })
 }
 
 function renderResponse(response) {
@@ -66,6 +74,7 @@ async function searchRepos() {
         })
     } else {
         searchResult.innerHTML = ''
+        reposList.innerHTML = ''
     }
 }
 
