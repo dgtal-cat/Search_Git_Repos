@@ -13,7 +13,6 @@ function debounce(callback, delay) {
 }
 
 function addRepoCard(repoData) {
-
     const repoCard = document.createElement('ul')
 
     const repoName = document.createElement('li')
@@ -22,6 +21,10 @@ function addRepoCard(repoData) {
 
     const deleteCardButton = document.createElement('div')
     deleteCardButton.classList.add('delete-card-button')
+
+    console.log('Name: ' + repoData.name)
+    console.log('Owner: ' + repoData['owner']['login'])
+    console.log('Stars: ' + repoData['stargazers_count'])
 
     repoName.textContent = 'Name: ' + repoData.name
     repoOwner.textContent = 'Owner: ' + repoData['owner']['login']
@@ -41,16 +44,26 @@ function addRepoCard(repoData) {
 
 function renderResponse(response) {
     const responseResult = response.items
-    const searchResultList = document.createElement('div')
-    responseResult.forEach((item) => {
-        let searchItem = document.createElement('div')
-        searchItem.classList.add('search-item')
-        searchItem.textContent = item.name
-        searchResultList.appendChild(searchItem)
-        searchResult.innerHTML = ''
-        searchResult.appendChild(searchResultList)
-        searchItem.addEventListener('click', () => addRepoCard(item))
-    })
+
+    if (responseResult.length === 0) {
+        warningPopUp.style.display = 'block'
+        warningPopUp.style.backgroundColor = '#2964b0'
+        warningPopUp.textContent = "Nothing found )="
+    } else {
+        warningPopUp.style.display = 'none'
+        warningPopUp.style.backgroundColor = 'brown'
+
+        const searchResultList = document.createElement('div')
+        responseResult.forEach((item) => {
+            let searchItem = document.createElement('div')
+            searchItem.classList.add('search-item')
+            searchItem.textContent = item.name
+            searchResultList.appendChild(searchItem)
+            searchResult.innerHTML = ''
+            searchResult.appendChild(searchResultList)
+            searchItem.addEventListener('click', () => addRepoCard(item))
+        })
+    }
 
 }
 
