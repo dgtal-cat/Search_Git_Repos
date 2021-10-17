@@ -1,6 +1,6 @@
 const searchResult = document.querySelector('.search-result')
 const searchInput = document.querySelector('.search-input')
-const searchResultBlock = document.querySelector('.repos-list-block')
+const reposList = document.querySelector('.repos-list-block')
 
 const warningPopUp = document.querySelector('.warning-popup')
 
@@ -12,9 +12,27 @@ function debounce(callback, delay) {
     }
 }
 
+function addRepoCard(repoData) {
+
+    const repoCard = document.createElement('ul')
+
+    const repoName = document.createElement('li')
+    const repoOwner = document.createElement('li')
+    const repoStars = document.createElement('li')
+
+    repoName.textContent = 'Name: ' + repoData.name
+    repoOwner.textContent = 'Owner: ' + repoData['owner']['login']
+    repoStars.textContent = 'Stars: ' + repoData['stargazers_count']
+
+    repoCard.appendChild(repoName)
+    repoCard.appendChild(repoOwner)
+    repoCard.appendChild(repoStars)
+
+    reposList.appendChild(repoCard)
+}
+
 function renderResponse(response) {
     const responseResult = response.items
-    console.log(responseResult)
     const searchResultList = document.createElement('div')
     responseResult.forEach((item) => {
         let searchItem = document.createElement('div')
@@ -23,7 +41,9 @@ function renderResponse(response) {
         searchResultList.appendChild(searchItem)
         searchResult.innerHTML = ''
         searchResult.appendChild(searchResultList)
+        searchItem.addEventListener('click', () => addRepoCard(item))
     })
+
 }
 
 async function searchRepos() {
