@@ -20,7 +20,16 @@ body {
     align-items: center;
 }
 
-.search-result-block {
+.warning-popup {
+    display: none;
+    position: absolute;
+    background-color: brown;
+    border: 2px dashed red;
+    color: #fff;
+    padding: 10px;
+}
+
+.repos-list-block {
     height: 50%;
 }
 
@@ -36,5 +45,21 @@ body {
     line-height: 56px;
     letter-spacing: 0;
     text-align: left;
+}
 
+.search-item {
+    width: 500px;
+    height: 40px;
+    font-size: 30px;
+    border: 2px solid black;
+    background-color: white;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.search-item:hover {
+    background-color: #2964b0;
+    color: white;
 }
