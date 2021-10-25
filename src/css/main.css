@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+html, body, .container {
+    min-height: 100%;
+}
+
 body {
     font-family: Roboto, Arial, sans-serif;
 }
@@ -10,14 +14,15 @@ body {
     width: 100%;
     max-width: 650px;
     min-width: 375px;
-    min-height: 500px;
-    height: auto;
+    min-height: 600px;
+    height: 100%;
     margin: 0 auto;
     background: rgb(193, 193, 193);
 }
 
 .search-block {
-    height: 50%;
+    height: 30%;
+    min-height: 325px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,7 +38,7 @@ body {
 }
 
 .repos-list-block {
-    height: 50%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
