@@ -101,7 +101,7 @@ body {
 }
 
 .search-input {
-    width: 77%;
+    width: 76%;
     max-width: 500px;
     height: 61px;
     margin-top: 62px;
@@ -142,9 +142,10 @@ body {
     margin: 0 auto;
 }
 
-.search-result > div {
-    display: flex;
-    flex-direction: column;
+.search-result > ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
 @media screen and (max-width: 415px) {

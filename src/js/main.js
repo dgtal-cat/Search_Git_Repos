@@ -54,9 +54,9 @@ function renderResponse(response) {
         warningPopUp.style.display = 'none'
         warningPopUp.style.backgroundColor = 'brown'
 
-        const searchResultList = document.createElement('div')
+        const searchResultList = document.createElement('ul')
         responseResult.forEach((item) => {
-            let searchItem = document.createElement('div')
+            let searchItem = document.createElement('li')
             searchItem.classList.add('search-item')
             searchItem.textContent = item.name
             searchResultList.appendChild(searchItem)
