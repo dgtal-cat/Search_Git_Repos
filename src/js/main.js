@@ -29,13 +29,14 @@ function addRepoCard(repoData) {
     repoName.textContent = 'Name: ' + repoData.name
     repoOwner.textContent = 'Owner: ' + repoData['owner']['login']
     repoStars.textContent = 'Stars: ' + repoData['stargazers_count']
-
     repoCard.appendChild(repoName)
     repoCard.appendChild(repoOwner)
     repoCard.appendChild(repoStars)
     repoCard.appendChild(deleteCardButton)
 
     reposList.appendChild(repoCard)
+    searchInput.value = ''
+    searchResult.innerHTML = ''
 
     deleteCardButton.addEventListener('click', () => {
         reposList.removeChild(repoCard)
@@ -91,4 +92,4 @@ async function searchRepos() {
     }
 }
 
-searchInput.addEventListener("keyup", debounce(searchRepos, 500))
+searchInput.addEventListener("keyup", debounce(searchRepos, 300))
