@@ -71,7 +71,8 @@ function renderResponse(response) {
 async function searchRepos() {
     const url = 'https://api.github.com/search/repositories?q='
     if (searchInput.value){
-        return await fetch(url+searchInput.value+';per_page=5').then((result) => {
+        return await fetch(url+searchInput.value+';per_page=5')
+           .then((result) => {
             if (result.ok) {
                 result.json()
                     .then(response => {
