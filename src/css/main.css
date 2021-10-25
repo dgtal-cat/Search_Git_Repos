@@ -54,6 +54,15 @@ body {
     cursor: default;
 }
 
+.repos-list-block > ul li {
+    width: 75%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+
 .delete-card-button {
     display: block;
     position: absolute;
